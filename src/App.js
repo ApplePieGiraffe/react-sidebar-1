@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import Hero from './components/Hero'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [activeSidebar, setActiveSidebar] = useState(false)
+
+    function toggleSidebar() {
+        setActiveSidebar(!activeSidebar)
+    }
+	
+	return (
+		<>
+			<Header toggleSidebarFunc={toggleSidebar}/>
+			<Sidebar isSidebarActive={activeSidebar}/>
+			<Hero/>
+		</>
+	)
 }
 
-export default App;
+export default App
